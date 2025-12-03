@@ -11,16 +11,16 @@ def main():
     # 1. Setup database
     conn = connect_database()
     create_all_tables(conn)
-    conn.close()
+    # conn.close()
     
     # 2. Migrate users
-    migrate_users_from_file()
+    migrate_users_from_file(conn)
     
     # 3. Test authentication
-    success, msg = register_user("alice", "SecurePass123!", "analyst")
+    success, msg = register_user("kareena", "SecurePass123!", "analyst")
     print(msg)
     
-    success, msg = login_user("alice", "SecurePass123!")
+    success, msg = login_user("kareena", "SecurePass123!")
     print(msg)
     
     # 4. Test CRUD
@@ -30,13 +30,15 @@ def main():
         "High",
         "Open",
         "Suspicious email detected",
-        "alice"
+        "kareena"
     )
     print(f"Created incident #{incident_id}")
     
     # 5. Query data
     df = get_all_incidents()
     print(f"Total incidents: {len(df)}")
+
+    conn.close()
 
 if __name__ == "__main__":
     main()

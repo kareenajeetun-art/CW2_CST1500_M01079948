@@ -1,4 +1,3 @@
-username,password_hash,role
 alice,$2b$12$...,analyst
 bob,$2b$12$...,user
 paul,$2b$12$...,user
